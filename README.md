@@ -33,7 +33,7 @@ This text you see here is *actually* written in Markdown! To get a feel for Mark
 Knowledge-Based Authentication uses technologies like 
 
 * [Node.js] - Because Javascript all the way
-* Socket.io - because websockets are awesome
+* [Socket.io](https://github.com/socketio/socket.io) - because websockets are awesome
 * [Express] - What will we do without it
 * [Twitter Bootstrap] - great UI boilerplate for modern web apps
 * [Webpack](https://github.com/webpack) - the bundling system, and whose gonna convert all that es6 code to es5 ?
