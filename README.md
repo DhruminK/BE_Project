@@ -30,8 +30,6 @@ Knowledge-Based Authentication uses technologies like
 * [request](https://github.com/request/request) - To make http calls from node.js simpler
 * [jQuery] - duh
 
-And of course Dillinger itself is open source with a [public repository][dill]
- on GitHub.
 
 ### Installation
 
