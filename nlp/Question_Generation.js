@@ -125,6 +125,7 @@ module.exports = (socket, user, message) => {
         socket.emit('message:question:medium', message);
 
         socket.on('message:question:medium', (msg) => {
+            console.log(msg);
             let qs = {
                 question: k.question,
                 answers: msg.content

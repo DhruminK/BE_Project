@@ -8,25 +8,27 @@ $.urlParam = function(name)
 }
 
 let socket    = io();
-let middle    = false;
-let medium_qs = false;
-let hard_qs   = false;
-let noUser    = false;
-let question  = false;
+let middle        = false;
+let medium_qs     = false;
+let hard_qs       = false;
+let noUser        = false;
+let question      = false;
+let usrSuccessFul = false;
 socket.on('connect', ()=> {
-	middle    = false;
-	medium_qs = false;
-	hard_qs   = false;
-	noUser    = false;
-	question  = false;
+	middle        = false;
+	medium_qs     = false;
+	hard_qs       = false;
+	noUser        = false;
+	question      = false;
+	usrSuccessFul = false;
 });
 
 socket.on('reconnect', ()=> {
-	middle    = false;
-	medium_qs = false;
-	hard_qs   = false;
-	noUser    = false;
-	question  = false;
+	middle        = false;
+	medium_qs     = false;
+	hard_qs       = false;
+	noUser        = false;
+	question      = false;
 });
 
 
@@ -59,7 +61,9 @@ socket.on('message:question:hard', (msg) => {
 
 socket.on('message:successful', (msg) => {
 	$('#messages').append($('<li>').text(msg.content));
+	usrSuccessFul = true;
 });
+
 
 socket.on('message:question', (msg) => {
 	console.log(msg);
@@ -71,12 +75,19 @@ socket.on('redirect:index' , (msg) => {
 	setTimeout(() => {window.location.href='http://localhost:8080/'} , 2000);
 });
 
+socket.on('chat', (msg) => {
+	$('#messages').append($('<li>').text(msg.content));
+});
+
 
 
 $('form').submit(() => {
 	let msg = {};
     msg.content = $('#m').val();
-	if(middle){
+    if(usrSuccessFul){
+    	socket.emit('chat', msg);
+    }
+	else if(middle){
 		socket.emit('message:middle', msg);
 		middle = false;
 	}

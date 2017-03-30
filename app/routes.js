@@ -63,7 +63,8 @@ module.exports = function(app, passport) {
                     let t = jwt.sign(usr, app.get('superSecret'), {
                         expiresIn: '1h' // expires in 1 hour
                     });
-                    return res.send({ 'token': t });
+                    console.log('Here');
+                    return res.send({ 'success': true, 'token': t });
                 });
             } else {
                 /*usr.facebook.token = token;
@@ -78,7 +79,7 @@ module.exports = function(app, passport) {
                 	token.token = t;
                 	return res.send(token);
                 });*/
-                res.redirect('/api/profile?token=');
+                res.send({ 'success': false});
             }
         });
     });
@@ -118,6 +119,11 @@ module.exports = function(app, passport) {
     app.get('/api/profile', (req, res) => {
 
         res.sendFile(path.resolve(path.join(__dirname, '../public/html/profile.html')));
+    });
+
+
+    app.get('/api/test', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '..', 'public', 'html', 'test.html'));
     });
 
 
