@@ -79,6 +79,9 @@ socket.on('chat', (msg) => {
 	$('#messages').append($('<li>').text(msg.content));
 });
 
+socket.on('chat:open', (msg) => {
+	$('#messages').append($('<li>').text("Opening App :"+msg.content));
+})
 
 
 $('form').submit(() => {

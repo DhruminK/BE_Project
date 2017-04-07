@@ -23,7 +23,15 @@ module.exports = (socket, user, question, message) => {
 			}
 			console.log("\n\n\n");
 			console.log(body.result);
+			console.log('-------------')
+			console.log(body);
+			if(body.result.action === 'open_application') {
+				message.content = body.result.parameters.app_open;
+				console.log(message.content);
+				return socket.emit('chat:open', message);
+			}
 			message.content = body.result.fulfillment.speech;
+			console.log(message.content);
 			socket.emit('chat', message);
 		});
 	});
