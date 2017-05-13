@@ -42,7 +42,7 @@ $ cd BE_Project
 $ npm install 
 $ npm start
 ```
-
+Open URL http://localhost:8080 to start interacting with the web application
 
 
 
